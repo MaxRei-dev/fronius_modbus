@@ -1,12 +1,12 @@
 {
     "domain": "fronius_modbus",
     "name": "Fronius Modbus",
-    "codeowners": ["@callifo"],
+    "codeowners": ["@MaxRei-dev"],
     "config_flow": true,
     "dependencies": [],
-    "documentation": "https://github.com/callifo/fronius_modbus",
+    "documentation": "https://github.com/MaxRei-dev/fronius_modbus",
     "iot_class": "local_polling",
-    "issue_tracker": "https://github.com/callifo/fronius_modbus/issues",
+    "issue_tracker": "https://github.com/MaxRei-dev/fronius_modbus/issues",
     "requirements": ["pymodbus>=3.11.2"],
-    "version": "0.3.0"
+    "version": "0.3.1"
   }
