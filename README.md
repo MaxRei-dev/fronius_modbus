@@ -23,7 +23,7 @@ It can use the authenticated Fronius web API for setup assistance and battery co
 - Go to HACS
 - Click on the 3 dots in the top right corner.
 - Select "Custom repositories"
-- Add the [URL](https://github.com/callifo/fronius_modbus) to the repository.
+- Add the [URL](https://github.com/MaxRei-dev/fronius_modbus) to the repository.
 - Select the 'integration' type.
 - Click the "ADD" button.
 
