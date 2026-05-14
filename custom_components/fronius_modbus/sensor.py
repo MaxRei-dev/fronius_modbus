@@ -158,6 +158,13 @@ async def async_setup_entry(
                 entities.append(sensor)
 
     if hub.storage_configured:
+        charge_limit_sensor = FroniusModbusChargeLimitSensor(
+            coordinator=coordinator,
+            device_info=hub.device_info_storage,
+            hub=hub,
+        )
+        entities.append(charge_limit_sensor)
+
         for sensor_info in INVERTER_STORAGE_SENSOR_TYPES.values():
             translation_key = sensor_info[0]
             options = SENSOR_STATE_OPTIONS.get(translation_key)
@@ -244,3 +251,35 @@ class FroniusModbusSensor(FroniusModbusBaseEntity, SensorEntity):
     @property
     def extra_state_attributes(self):
         return None
+
+
+class FroniusModbusChargeLimitSensor(FroniusModbusBaseEntity, SensorEntity):
+    """Sensor that shows the PV charge limit converted from percent to watts."""
+    _translation_platform = "sensor"
+
+    def __init__(self, coordinator, device_info, hub):
+        super().__init__(
+            coordinator=coordinator,
+            device_info=device_info,
+            name="charge_limit",
+            key="charge_limit",
+            translation_key="charge_limit",
+            device_class=SensorDeviceClass.POWER,
+            state_class="measurement",
+            unit="W",
+            icon="mdi:solar-power",
+        )
+        self._hub = hub
+
+    @property
+    def state(self):
+        data = self.coordinator.data
+        if not data:
+            return None
+        percent = data.get("charge_limit")
+        if percent is None:
+            return None
+        max_w = self._hub.max_charge_rate_w
+        if not max_w:
+            return None
+        return round(percent / 100.0 * max_w, 0)

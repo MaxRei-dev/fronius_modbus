@@ -431,6 +431,9 @@
       "soc_minimum": {
         "name": "SoC Minimum"
       },
+      "charge_limit": {
+        "name": "PV Charge Limit"
+      },
       "charging_power": {
         "name": "Charging power"
       },
