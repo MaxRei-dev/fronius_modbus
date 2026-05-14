@@ -163,7 +163,6 @@ class Hub:
         if api_username and (api_password or api_token):
             self._webclient = FroniusWebClient(
                 host=host,
-                username=api_username,
                 password=api_password or "",
                 token=api_token,
             )

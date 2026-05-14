@@ -4,7 +4,7 @@
     "step": {
       "user": {
         "title": "Set up Fronius System",
-        "description": "Enter the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If no stored token exists for this host, the next step asks for the customer password.",
+        "description": "Enter the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If no stored token exists for this host, the next step asks for the technician password.",
         "data": {
           "host": "Host",
           "scan_interval": "Update interval (seconds)",
@@ -12,15 +12,15 @@
         }
       },
       "user_password": {
-        "title": "Customer Password",
-        "description": "Enter the customer password to create or refresh the stored token. The password is not stored in the config entry.",
+        "title": "Technician Password",
+        "description": "Enter the technician password to create or refresh the stored token. The password is not stored in the config entry.",
         "data": {
           "api_password": "Customer password"
         }
       },
       "reconfigure": {
         "title": "Review Fronius System",
-        "description": "Review the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If the stored token is missing or invalid, the next step asks for the customer password.",
+        "description": "Review the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If the stored token is missing or invalid, the next step asks for the technician password.",
         "data": {
           "host": "Host",
           "scan_interval": "Update interval (seconds)",
@@ -28,8 +28,8 @@
         }
       },
       "reconfigure_password": {
-        "title": "Customer Password",
-        "description": "Enter the customer password to create or refresh the stored token.",
+        "title": "Technician Password",
+        "description": "Enter the technician password to create or refresh the stored token.",
         "data": {
           "api_password": "Customer password"
         }
@@ -46,8 +46,8 @@
       "unknown": "Unknown error",
       "scan_interval_too_short": "Minimum update interval is 5 seconds.",
       "modbus_address_conflict": "Modbus IDs are not unique",
-      "missing_api_password": "Customer password is required.",
-      "invalid_api_credentials": "Customer login failed.",
+      "missing_api_password": "Technician password is required.",
+      "invalid_api_credentials": "Technician login failed.",
       "cannot_resolve_local_ip": "Could not determine the Home Assistant IP."
     }
   },
@@ -460,12 +460,6 @@
       "charge_from_grid": {
         "name": "Charge from grid"
       },
-      "api_charge_from_ac": {
-        "name": "Charge from AC"
-      },
-      "api_charge_from_grid": {
-        "name": "Charge from grid"
-      },
       "api_solar_api_enabled": {
         "name": "Solar API"
       }
@@ -478,7 +472,7 @@
         "step": {
           "init": {
             "title": "Review Fronius System",
-            "description": "The entry \"{entry_title}\" needs a valid customer token. Review the host, update interval, and Modbus IP restriction. The next step asks for the customer password only if needed.",
+            "description": "The entry \"{entry_title}\" needs a valid technician token. Review the host, update interval, and Modbus IP restriction. The next step asks for the technician password only if needed.",
             "data": {
               "host": "Host",
               "scan_interval": "Update interval (seconds)",
@@ -486,8 +480,8 @@
             }
           },
           "password": {
-            "title": "Customer Password",
-            "description": "Enter the customer password to create or refresh the stored token.",
+            "title": "Technician Password",
+            "description": "Enter the technician password to create or refresh the stored token.",
             "data": {
               "api_password": "Customer password"
             }
@@ -501,8 +495,8 @@
           "unknown": "Unknown error",
           "scan_interval_too_short": "Minimum update interval is 5 seconds.",
           "modbus_address_conflict": "Modbus IDs are not unique",
-          "missing_api_password": "Customer password is required.",
-          "invalid_api_credentials": "Customer login failed.",
+          "missing_api_password": "Technician password is required.",
+          "invalid_api_credentials": "Technician login failed.",
           "cannot_resolve_local_ip": "Could not determine the Home Assistant IP."
         },
         "abort": {
@@ -538,7 +532,7 @@
         },
         "error": {
           "cannot_connect": "Failed to connect to the inverter.",
-          "invalid_api_credentials": "Customer login failed.",
+          "invalid_api_credentials": "Technician login failed.",
           "unknown": "Unknown error"
         },
         "abort": {
@@ -555,7 +549,7 @@
     "step": {
       "init": {
         "title": "Set up Fronius System",
-        "description": "Set the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If the stored token is missing or invalid, the next step asks for the customer password.",
+        "description": "Set the host, update interval, and Modbus IP restriction. Minimum interval: 5 seconds. If the stored token is missing or invalid, the next step asks for the technician password.",
         "data": {
           "host": "Host",
           "scan_interval": "Update interval (seconds)",
@@ -563,8 +557,8 @@
         }
       },
       "password": {
-        "title": "Customer Password",
-        "description": "Enter the customer password to create or refresh the stored token.",
+        "title": "Technician Password",
+        "description": "Enter the technician password to create or refresh the stored token.",
         "data": {
           "api_password": "Customer password"
         }
@@ -578,8 +572,8 @@
       "unknown": "Unknown error",
       "scan_interval_too_short": "Minimum update interval is 5 seconds.",
       "modbus_address_conflict": "Modbus IDs are not unique",
-      "missing_api_password": "Customer password is required.",
-      "invalid_api_credentials": "Customer login failed.",
+      "missing_api_password": "Technician password is required.",
+      "invalid_api_credentials": "Technician login failed.",
       "cannot_resolve_local_ip": "Could not determine the Home Assistant IP."
     }
   }

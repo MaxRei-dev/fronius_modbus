@@ -370,7 +370,6 @@ class FroniusWebClient:
     def __init__(
         self,
         host: str,
-        username: str | None = None,
         password: str = "",
         token: dict[str, str] | None = None,
         timeout: float = 4.0,
@@ -396,10 +395,9 @@ class FroniusWebClient:
             timeout=self._timeout,
         )
 
-        _LOGGER.error(
-            "Fronius Web API response: status=%s headers=%s body=%s",
+        _LOGGER.debug(
+            "Fronius Web API response: status=%s body=%s",
             response.status_code,
-            response.headers,
             response.text,
         )
 
@@ -605,29 +603,15 @@ class FroniusWebClient:
         self,
         watt_peak_reference: int = 10000,
     ) -> bool:
-        payload: dict[str, Any] = {
-            "exportLimits": {
-                "activePower": {
-                    "hardLimit": {"powerLimit": 0},
-                    "softLimit": {"powerLimit": 10},
-                    "networkMode": "limitLocal",
-                },
-                "autodetectedControlledDevices": {},
-                "staticControlledDevices": {},
-            },
-            "visualization": {
-                "wattPeakReferenceValue": 3800,
-                "exportLimits": {
-                    "activePower": {
-                        "hardLimit": {"powerLimit": 0},
-                        "softLimit": {"powerLimit": 10},
-                        "networkMode": "limitLocal",
-                    },
-                },
-            },
-        }
-
-        return self._post_ok("/api/config/limit_settings/powerLimits", payload)
+        current = self.get_power_limits_config()
+        if not isinstance(current, dict):
+            current = {}
+        visualization = current.get("visualization")
+        if not isinstance(visualization, dict):
+            visualization = {}
+        visualization["wattPeakReferenceValue"] = int(watt_peak_reference)
+        current["visualization"] = visualization
+        return self._post_ok("/api/config/limit_settings/powerLimits", current)
 
     def set_battery_charge_sources(self, charge_from_grid: bool, charge_from_ac: bool) -> bool:
         payload = {

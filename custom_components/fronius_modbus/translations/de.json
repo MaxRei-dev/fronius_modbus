@@ -4,7 +4,7 @@
     "step": {
       "user": {
         "title": "Fronius-System einrichten",
-        "description": "Gib den Host, das Aktualisierungsintervall und die Modbus-IP-Beschränkung ein. Mindestintervall: 5 Sekunden. Wenn für diesen Host kein gespeicherter Token existiert, wird im nächsten Schritt nach dem Kundenpasswort gefragt.",
+        "description": "Gib den Host, das Aktualisierungsintervall und die Modbus-IP-Beschränkung ein. Mindestintervall: 5 Sekunden. Wenn für diesen Host kein gespeicherter Token existiert, wird im nächsten Schritt nach dem Technikerpasswort gefragt.",
         "data": {
           "host": "Host",
           "scan_interval": "Aktualisierungsintervall (Sekunden)",
@@ -12,15 +12,15 @@
         }
       },
       "user_password": {
-        "title": "Kundenpasswort",
-        "description": "Gib das Kundenpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren. Das Passwort wird nicht im Konfigurationseintrag gespeichert.",
+        "title": "Technikerpasswort",
+        "description": "Gib das Technikerpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren. Das Passwort wird nicht im Konfigurationseintrag gespeichert.",
         "data": {
-          "api_password": "Kundenpasswort"
+          "api_password": "Technikerpasswort"
         }
       },
       "reconfigure": {
         "title": "Fronius-System prüfen",
-        "description": "Prüfe Host, Aktualisierungsintervall und Modbus-IP-Beschränkung. Mindestintervall: 5 Sekunden. Wenn der gespeicherte Token fehlt oder ungültig ist, wird im nächsten Schritt nach dem Kundenpasswort gefragt.",
+        "description": "Prüfe Host, Aktualisierungsintervall und Modbus-IP-Beschränkung. Mindestintervall: 5 Sekunden. Wenn der gespeicherte Token fehlt oder ungültig ist, wird im nächsten Schritt nach dem Technikerpasswort gefragt.",
         "data": {
           "host": "Host",
           "scan_interval": "Aktualisierungsintervall (Sekunden)",
@@ -28,10 +28,10 @@
         }
       },
       "reconfigure_password": {
-        "title": "Kundenpasswort",
-        "description": "Gib das Kundenpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
+        "title": "Technikerpasswort",
+        "description": "Gib das Technikerpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
         "data": {
-          "api_password": "Kundenpasswort"
+          "api_password": "Technikerpasswort"
         }
       }
     },
@@ -46,8 +46,8 @@
       "unknown": "Unbekannter Fehler",
       "scan_interval_too_short": "Das Mindestintervall für die Aktualisierung beträgt 5 Sekunden.",
       "modbus_address_conflict": "Modbus-IDs sind nicht eindeutig",
-      "missing_api_password": "Das Kundenpasswort ist erforderlich.",
-      "invalid_api_credentials": "Kundenanmeldung fehlgeschlagen.",
+      "missing_api_password": "Das Technikerpasswort ist erforderlich.",
+      "invalid_api_credentials": "Technikerzugang fehlgeschlagen.",
       "cannot_resolve_local_ip": "Die Home-Assistant-IP konnte nicht ermittelt werden."
     }
   },
@@ -84,6 +84,9 @@
       },
       "power_factor": {
         "name": "Leistungsfaktor"
+      },
+      "api_watt_peak_reference": {
+        "name": "Watt-Peak-Referenz"
       }
     },
     "select": {
@@ -457,12 +460,6 @@
       "charge_from_grid": {
         "name": "Aus dem Netz laden"
       },
-      "api_charge_from_ac": {
-        "name": "Aus AC laden"
-      },
-      "api_charge_from_grid": {
-        "name": "Aus dem Netz laden"
-      },
       "api_solar_api_enabled": {
         "name": "Solar-API"
       }
@@ -475,7 +472,7 @@
         "step": {
           "init": {
             "title": "Fronius-System prüfen",
-            "description": "Der Eintrag \"{entry_title}\" benötigt einen gültigen Kundentoken. Prüfe Host, Aktualisierungsintervall und Modbus-IP-Beschränkung. Im nächsten Schritt wird nur bei Bedarf nach dem Kundenpasswort gefragt.",
+            "description": "Der Eintrag \"{entry_title}\" benötigt einen gültigen Technikertoken. Prüfe Host, Aktualisierungsintervall und Modbus-IP-Beschränkung. Im nächsten Schritt wird nur bei Bedarf nach dem Technikerpasswort gefragt.",
             "data": {
               "host": "Host",
               "scan_interval": "Aktualisierungsintervall (Sekunden)",
@@ -483,10 +480,10 @@
             }
           },
           "password": {
-            "title": "Kundenpasswort",
-            "description": "Gib das Kundenpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
+            "title": "Technikerpasswort",
+            "description": "Gib das Technikerpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
             "data": {
-              "api_password": "Kundenpasswort"
+              "api_password": "Technikerpasswort"
             }
           }
         },
@@ -498,8 +495,8 @@
           "unknown": "Unbekannter Fehler",
           "scan_interval_too_short": "Das Mindestintervall für die Aktualisierung beträgt 5 Sekunden.",
           "modbus_address_conflict": "Modbus-IDs sind nicht eindeutig",
-          "missing_api_password": "Das Kundenpasswort ist erforderlich.",
-          "invalid_api_credentials": "Kundenanmeldung fehlgeschlagen.",
+          "missing_api_password": "Das Technikerpasswort ist erforderlich.",
+          "invalid_api_credentials": "Technikerzugang fehlgeschlagen.",
           "cannot_resolve_local_ip": "Die Home-Assistant-IP konnte nicht ermittelt werden."
         },
         "abort": {
@@ -535,7 +532,7 @@
         },
         "error": {
           "cannot_connect": "Verbindung zum Wechselrichter fehlgeschlagen.",
-          "invalid_api_credentials": "Kundenanmeldung fehlgeschlagen.",
+          "invalid_api_credentials": "Technikerzugang fehlgeschlagen.",
           "unknown": "Unbekannter Fehler"
         },
         "abort": {
@@ -552,7 +549,7 @@
     "step": {
       "init": {
         "title": "Fronius-System einrichten",
-        "description": "Lege Host, Aktualisierungsintervall und Modbus-IP-Beschränkung fest. Mindestintervall: 5 Sekunden. Wenn der gespeicherte Token fehlt oder ungültig ist, wird im nächsten Schritt nach dem Kundenpasswort gefragt.",
+        "description": "Lege Host, Aktualisierungsintervall und Modbus-IP-Beschränkung fest. Mindestintervall: 5 Sekunden. Wenn der gespeicherte Token fehlt oder ungültig ist, wird im nächsten Schritt nach dem Technikerpasswort gefragt.",
         "data": {
           "host": "Host",
           "scan_interval": "Aktualisierungsintervall (Sekunden)",
@@ -560,10 +557,10 @@
         }
       },
       "password": {
-        "title": "Kundenpasswort",
-        "description": "Gib das Kundenpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
+        "title": "Technikerpasswort",
+        "description": "Gib das Technikerpasswort ein, um den gespeicherten Token zu erstellen oder zu aktualisieren.",
         "data": {
-          "api_password": "Kundenpasswort"
+          "api_password": "Technikerpasswort"
         }
       }
     },
@@ -575,8 +572,8 @@
       "unknown": "Unbekannter Fehler",
       "scan_interval_too_short": "Das Mindestintervall für die Aktualisierung beträgt 5 Sekunden.",
       "modbus_address_conflict": "Modbus-IDs sind nicht eindeutig",
-      "missing_api_password": "Das Kundenpasswort ist erforderlich.",
-      "invalid_api_credentials": "Kundenanmeldung fehlgeschlagen.",
+      "missing_api_password": "Das Technikerpasswort ist erforderlich.",
+      "invalid_api_credentials": "Technikerzugang fehlgeschlagen.",
       "cannot_resolve_local_ip": "Die Home-Assistant-IP konnte nicht ermittelt werden."
     }
   }

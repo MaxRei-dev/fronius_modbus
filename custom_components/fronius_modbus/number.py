@@ -63,22 +63,22 @@ async def async_setup_entry(hass, config_entry, async_add_entities) -> None:
                 )
                 entities.append(number)
 
-        if hub.web_api_configured:
-            for number_info in INVERTER_API_NUMBER_TYPES:
-                number = FroniusModbusNumber(
-                    coordinator=coordinator,
-                    device_info=hub.device_info_inverter,
-                    name=number_info[0],
-                    key=number_info[1],
-                    translation_key=number_info[0],
-                    min_val=number_info[2]['min'],
-                    max_val=number_info[2]['max'],
-                    unit=number_info[2]['unit'],
-                    mode=number_info[2]['mode'],
-                    native_step=number_info[2]['step'],
-                    hub=hub,
-                )
-                entities.append(number)
+    if hub.web_api_configured:
+        for number_info in INVERTER_API_NUMBER_TYPES:
+            number = FroniusModbusNumber(
+                coordinator=coordinator,
+                device_info=hub.device_info_inverter,
+                name=number_info[0],
+                key=number_info[1],
+                translation_key=number_info[0],
+                min_val=number_info[2]['min'],
+                max_val=number_info[2]['max'],
+                unit=number_info[2]['unit'],
+                mode=number_info[2]['mode'],
+                native_step=number_info[2]['step'],
+                hub=hub,
+            )
+            entities.append(number)
 
     # Add inverter number entities.
     for number_info in INVERTER_NUMBER_TYPES:

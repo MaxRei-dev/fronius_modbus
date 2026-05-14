@@ -215,7 +215,7 @@ SINGLE_PHASE_UNSUPPORTED_METER_SENSOR_KEYS = (
 STORAGE_SENSOR_TYPES = {
     'storage_temperature': ['storage_temperature', 'storage_temperature', SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT, '°C', 'mdi:thermometer', None],
     'control_mode': ['control_mode', 'control_mode', None, None, None, None, EntityCategory.DIAGNOSTIC],
-    'charge_status': ['charge_status', 'charge_status', None, None, None, None, None, EntityCategory.DIAGNOSTIC],
+    'charge_status': ['charge_status', 'charge_status', None, None, None, None, EntityCategory.DIAGNOSTIC],
     'max_charge': ['max_charge', 'max_charge', SensorDeviceClass.POWER, SensorStateClass.MEASUREMENT, 'W', None, EntityCategory.DIAGNOSTIC],
     'soc': ['soc', 'soc', SensorDeviceClass.BATTERY, SensorStateClass.MEASUREMENT, '%', None, None],
     'charging_power': ['charging_power', 'charging_power',  None, None, '%', 'mdi:gauge', EntityCategory.DIAGNOSTIC],
