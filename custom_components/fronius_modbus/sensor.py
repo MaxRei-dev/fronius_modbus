@@ -262,7 +262,7 @@ class FroniusModbusChargeLimitSensor(FroniusModbusBaseEntity, SensorEntity):
             coordinator=coordinator,
             device_info=device_info,
             name="charge_limit",
-            key="charge_limit",
+            key="charge_limit_w",  # distinct key to avoid unique_id collision with the number entity
             translation_key="charge_limit",
             device_class=SensorDeviceClass.POWER,
             state_class="measurement",
